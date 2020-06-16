@@ -13,11 +13,13 @@ Hand shand,chand;
 Mouse mouse;
 boolean mouseClicked = false;
 int gseq;
+int loadCnt;
 /*0:title
   1:connecting→削除
   2:sturn
   3:cturn
-  4:gameover*/
+  4:gameover
+  5:loading*/
 int spoint,cpoint;
 
 void setup(){
@@ -67,12 +69,11 @@ void playSE(int num){
 }
 
 void gameInit(){
-  gseq = 0;
+  gseq = 5;
+  loadCnt = 0;
   spoint = 2;
   cpoint = 2;
   board.clear();
-  SEs[4].rewind();
-  SEs[4].play();
   bgm.play();
   bgm.loop();
 }
@@ -81,6 +82,16 @@ void draw(){
   dispBackground();
   fill(0);
   switch(gseq){
+    case 5:
+        textSize(120);
+        text("loading...",width/2,height/2+30);
+        loadCnt++;
+        if(loadCnt >= pow(10,2)){
+          gseq = 0;
+          SEs[4].rewind();
+          SEs[4].play();
+        }
+      break;
     case 0:
       image(src.imgs[7],width/2,220);
       textSize(45);
