@@ -7,5 +7,5 @@ void draw(){
   noStroke();
   ellipse(50+20*cos(a),50+20*sin(a),50,50);
   
-  a += 0.1;
+  a += 0.5;
 }
