@@ -86,7 +86,7 @@ void draw(){
         textSize(120);
         text("loading...",width/2,height/2+30);
         loadCnt++;
-        if(loadCnt >= pow(10,2)){
+        if(loadCnt >= pow(10,10)){
           gseq = 0;
           SEs[4].rewind();
           SEs[4].play();
